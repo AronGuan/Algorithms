@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class MaxPQ<key extends Comparable<key>>{
 
-	private key[] pq; //»ùÓÚ¶ÑµÄÍêÈ«¶ş²æÊ÷
-	private int N = 0;  //´æ´¢ÓÚpa[1...N]ÖĞ,pq[0]Ã»ÓĞÊ¹ÓÃ
+	private key[] pq; //åŸºäºå †çš„å®Œå…¨äºŒå‰æ ‘
+	private int N = 0;  //å­˜å‚¨äºpa[1...N]ä¸­,pq[0]æ²¡æœ‰ä½¿ç”¨
 	
 	public MaxPQ(int maxN){
 		pq = (key[])new Comparable[maxN+1];
@@ -13,9 +13,6 @@ public class MaxPQ<key extends Comparable<key>>{
 	
 	public boolean isEmpty(){
 		return N == 0;
-	}
-	public key[] getpq(){
-		return pq;
 	}
 	
 	public int size(){
@@ -55,16 +52,11 @@ public class MaxPQ<key extends Comparable<key>>{
 	}
 	
 	public key delMax(){
-		key max = pq[1]; //´Ó¸ù½ÚµãµÃµ½×î´óÔªËØ
-		exch(1,N--);  //½«ÆäºÍ×îºóÒ»¸ö½áµã½»»»
+		key max = pq[1]; //ä»æ ¹èŠ‚ç‚¹å¾—åˆ°æœ€å¤§å…ƒç´ 
+		exch(1,N--);  //å°†å…¶å’Œæœ€åä¸€ä¸ªç»“ç‚¹äº¤æ¢
 		pq[N+1] = null;
 		sink(1);
 		return max;
-	}
-
-	@Override
-	public String toString() {
-		return "MaxPQ [pq=" + Arrays.toString(pq) + "]";
 	}
 	
 	
