@@ -1,21 +1,21 @@
 package pers.aron;
 
-//×Ô¶¥ÏòÏÂµÄ·½Ê½
+
 public class Quick extends Sort{
 
 	public int partition(Comparable[] a,int lo,int hi){
-		//½«Êı×éÇĞ·ÖÎªa[lo...i-1],a[i],a[i+1..hi]
+		//å°†æ•°ç»„åˆ‡åˆ†ä¸ºa[lo...i-1],a[i],a[i+1..hi]
 		int i = lo, j = hi + 1;
-		Comparable v = a[lo];  //ÇĞ·ÖÔªËØ
+		Comparable v = a[lo];  //åˆ‡åˆ†å…ƒç´ 
 		while(true){
-			//É¨Ãè×óÓÒ£¬¼ì²éÉ¨ÃèÊÇ·ñ½áÊø²¢½»»»ÔªËØ
+			//æ‰«æå·¦å³ï¼Œæ£€æŸ¥æ‰«ææ˜¯å¦ç»“æŸå¹¶äº¤æ¢å…ƒç´ 
 			while(less(a[++i],v)) if(i == hi) break;
 			while(less(v,a[--j])) if(j == lo) break;
 			if(i >= j) break;
 			exch(a,i,j);
 		}
-		exch(a,lo,j);  //½«v=a[j	]·ÅÈëÕıÈ·µÄÎ»ÖÃ
-		return j;    //a[lo...j-1]<=a[j]<=a[j+1...hi]´ï³É
+		exch(a,lo,j);  //å°†v=a[j	]æ”¾å…¥æ­£ç¡®çš„ä½ç½®
+		return j;    //a[lo...j-1]<=a[j]<=a[j+1...hi]è¾¾æˆ
 	}
 	
 	public void sort(Comparable[] a){
@@ -24,9 +24,9 @@ public class Quick extends Sort{
 	
 	private void sort(Comparable[] a,int lo,int hi){
 		if(hi <= lo) return;
-		int j = partition(a,lo,hi);//ÇĞ·Ö
-		sort(a,lo,j-1); //½«×ó°ë²¿·Öa[lo...j-1]ÅÅĞò
-		sort(a,j+1,hi); //½«ÓÒ°ë²¿·İa[j+1...hi]ÅÅĞò
+		int j = partition(a,lo,hi);//åˆ‡åˆ†
+		sort(a,lo,j-1); //å°†å·¦åŠéƒ¨åˆ†a[lo...j-1]æ’åº
+		sort(a,j+1,hi); //å°†å³åŠéƒ¨ä»½a[j+1...hi]æ’åº
 	}
 	
 	public static void main(String[] args){
