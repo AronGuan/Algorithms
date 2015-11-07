@@ -26,7 +26,7 @@ rank()方法
         <th rowspan="2">算法</th>
         <th colspan="2">最坏的成本</th>
         <th colspan="2">平均情况下的成本</th>
-        <th>是否支持有序性相关的操作</th>
+        <th rowspan="2">是否支持有序性相关的操作</th>
     </tr>
     <tr>
         <th>查找</th>
