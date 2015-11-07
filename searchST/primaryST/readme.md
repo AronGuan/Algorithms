@@ -1,1 +1,1 @@
-SequentialSearchST:顺序查找(基于无序链表)  
+SequentialSearchST:无序链表的顺序查找  
