@@ -1,1 +1,1 @@
-SequentialSearchST:кЁпР╡Иур(╩ЫсзнчпРа╢╠М)  
+SequentialSearchST:Ф≈═Е╨▐И⌠╬Х║╗Г └И║╨Е╨▐Ф÷╔Ф┴╬  
