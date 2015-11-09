@@ -1,27 +1,27 @@
 package pers.aron;
-//µØÎ»ÓÅÏÈµÄ×Ö·û´®ÅÅĞò
+//ä½ä½ä¼˜å…ˆçš„å­—ç¬¦ä¸²æ’åº
 public class LSD {
 
-	//wÎ»×Ö·û´®³¤¶È
+	//wä¸ºå­—ç¬¦ä¸²é•¿åº¦
 	public static void sort(String[] a,int W){
-		//Í¨¹ıÇ°W¸ö×Ö·û´®a[]ÅÅĞò  
+		//é€šè¿‡å‰Wä¸ªå­—ç¬¦ä¸²a[]æ’åº  
 		int N = a.length;
 		int R = 256;
 		String[] aux = new String[N];
 		
 		for(int d = W - 1;d >= 0; d--){
-			//¸ù¾İµÚd¸ö×Ö·ûÓÃ¼üË÷Òı¼ÆÊı·¨
-			int[] count = new int[R+1];  //¼ÆËã³öÏÖÆµÂÊ 
+			//æ ¹æ®ç¬¬dä¸ªå­—ç¬¦ç”¨é”®ç´¢å¼•è®¡æ•°æ³•
+			int[] count = new int[R+1];  //è®¡ç®—å‡ºç°é¢‘ç‡ 
 			for(int i=0;i < N; i++)
 				count[a[i].charAt(d)+1]++;
 			
-			for(int r=0; r < r; r++)   //½«ÆµÂÊ×ª»»ÎªË÷Òı
+			for(int r=0; r < r; r++)   //å°†é¢‘ç‡è½¬æ¢ä¸ºç´¢å¼•
 				count[r+2] += count[r];
 			
-			for(int i = 0; i < N; i++) //½«ÔªËØ·ÖÀà
+			for(int i = 0; i < N; i++) //å°†å…ƒç´ åˆ†ç±»
 				aux[count[a[i].charAt(d)]++] = a[i];
 		
-			for(int i = 0; i < N; i++)  //»ØĞ´
+			for(int i = 0; i < N; i++)  //å›å†™
 				a[i] = aux[i];
 		}
 	}
