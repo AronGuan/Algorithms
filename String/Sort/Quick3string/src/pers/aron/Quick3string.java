@@ -12,6 +12,10 @@ public class Quick3string {
 			return s.charAt(d);
 		else return -1;
 	}
+
+	public void sort(String[] a){
+		sort(a,0,a.length - 1,0);
+	}
 	
 	private static void sort(String[] a,int lo,int hi,int d){
 		if(hi <= lo) return;
@@ -24,11 +28,11 @@ public class Quick3string {
 			else if(t > v) exch(a,i,gt--);
 			else i++;
 		}
-		//Ê××ÖÄ¸Ğ¡ÓÚÇĞ·Ö×Ö·ûµÄ×Ö·û´®×ÓÊı×é
+		//é¦–å­—æ¯å°äºåˆ‡åˆ†å­—ç¬¦çš„å­—ç¬¦ä¸²å­æ•°ç»„
 		sort(a,lo,lt-1,d); 
-		//Ê××ÖÄ¸µÈÓÚÇĞ·Ö×Ö·ûµÄ×Ö·û´®µÄ×ÓÊı×é(ÅÅĞòÊ±ºöÂÔËüÃÇµÄÊ××ÖÄ¸)
+		//é¦–å­—æ¯ç­‰äºåˆ‡åˆ†å­—ç¬¦çš„å­—ç¬¦ä¸²çš„å­æ•°ç»„(æ’åºæ—¶å¿½ç•¥å®ƒä»¬çš„é¦–å­—æ¯)
 		if(v >= 0) sort(a,lt,gt,d+1); 
-		//Ê××ÖÄ¸´óÓÚÇĞ·Ö×Ö·ûµÄ×Ö·û´®µÄ×ÓÊı×é
+		//é¦–å­—æ¯å¤§äºåˆ‡åˆ†å­—ç¬¦çš„å­—ç¬¦ä¸²çš„å­æ•°ç»„
 		sort(a,gt+1,hi,d);
 	}
 }
