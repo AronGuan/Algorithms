@@ -2,26 +2,26 @@ package pers.aron;
 
 public class Graph {
 
-	private final int V;  //¶¥µãÊıÄ¿
-	private int E; //±ßµÄÊıÄ¿
-	private Bag<Integer>[] adj;  //ÁÚ½Ó±í
+	private final int V;  //é¡¶ç‚¹æ•°ç›®
+	private int E; //è¾¹çš„æ•°ç›®
+	private Bag<Integer>[] adj;  //é‚»æ¥è¡¨
 	
 	public Graph(int V){
 		this.V = V;
 		this.E = 0;
-		adj = (Bag<Integer>[]) new Bag[V];  //´´½¨ÁÚ½Ó±í
-		for(int v = 0; v < V; v++){  		//½«ËùÓĞÁ´±í³õÊ¼»¯Îª¿Õ
+		adj = (Bag<Integer>[]) new Bag[V];  //åˆ›å»ºé‚»æ¥è¡¨
+		for(int v = 0; v < V; v++){  		//å°†æ‰€æœ‰é“¾è¡¨åˆå§‹åŒ–ä¸ºç©º
 			adj[v] = new Bag<Integer>(); 
 		}
 	}
 	
 	public Graph(In in){  //In
-		this(in.readInt());  //¶ÁÈ¡V²¢½«Í¼³õÊ¼»¯
-		int E = in.readInt();  //¶ÁÈ¡E
+		this(in.readInt());  //è¯»å–Vå¹¶å°†å›¾åˆå§‹åŒ–
+		int E = in.readInt();  //è¯»å–E
 		for(int i = 0;i < E;i++){
-			//Ìí¼ÓÒ»Ìõ±ß
-			int v = in.readInt();  //¶ÁÈ¡Ò»¸ö¶¥µã
-			int w = in.readInt(); //¶ÁÈ¡ÁíÒ»¸ö¶¥µã
+			//æ·»åŠ ä¸€æ¡è¾¹
+			int v = in.readInt();  //è¯»å–ä¸€ä¸ªé¡¶ç‚¹
+			int w = in.readInt(); //è¯»å–å¦ä¸€ä¸ªé¡¶ç‚¹
 			addEdge(v,w);
 		}
 	}
@@ -40,5 +40,48 @@ public class Graph {
 	}
 	public Iterable<Integer> adj(int v){
 		return adj[v];
+	}
+	
+		//è®¡ç®—vçš„åº¦æ•°
+	public static int degree(Graph G,int v){
+		int degree = 0;
+		for(int w:G.adj(v)) degree++;
+		return degree;
+	}
+	
+	//è®¡ç®—æ‰€æœ‰é¡¶ç‚¹çš„æœ€å¤§åº¦æ•°
+	public static int maxDegree(Graph G){
+		int max = 0;
+		for(int v = 0; v < G.V();v++){
+			if(degree(G,v)>max){
+				max = degree(G,v);
+			}
+		}
+		return max;
+	}
+	
+	//è®¡ç®—æ‰€æœ‰é¡¶ç‚¹çš„å¹³å‡åº¦æ•°
+	public static double avgDegree(Graph G){
+		return 2 * G.E()/G.V();
+	}
+	
+	//è®¡ç®—è‡ªç¯çš„ä¸ªæ•°
+	public static int numberOfSelfLoops(Graph G){
+		int count = 0;
+		for(int v = 0; v < G.V();v++)
+			for(int w:G.adj(v))
+				if(v == w) count++;
+		return count/2;  //æ¯æ¡è¾¹éƒ½è¢«è®°è¿‡ä¸¤æ¬¡	
+	}
+	//å›¾çš„é‚»æ¥è¡¨çš„å­—ç¬¦ä¸²è¡¨ç¤º
+	public String toString(){
+		String s = V + " vertices, " + E + " edges\n";
+		for(int v = 0;v < V;v++){
+			s += v + ": ";
+			for(int w:this.adj(v))
+				s +=w + " ";
+			s += "\n";
+		}
+		return s;
 	}
 }
