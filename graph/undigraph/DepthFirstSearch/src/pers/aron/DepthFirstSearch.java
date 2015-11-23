@@ -3,23 +3,23 @@ package pers.aron;
 //深度优先搜索
 public class DepthFirstSearch {
 
-	private boolean[] marded;
+	private boolean[] marked;
 	private int count;
 	
 	public DepthFirstSearch(Graph G,int s){
-		marded = new boolean[G.V()];
+		marked = new boolean[G.V()];
 		dfs(G,s);
 	}
 	
 	private void dfs(Graph G,int v){
-		marded[v] = true;
+		marked[v] = true;
 		count++;
 		for(int w:G.adj(v))
-			if(!marded[w]) dfs(G,w);
+			if(!marked[w]) dfs(G,w);
 	}
 	
 	public boolean marked(int w){
-		return marded[w];
+		return marked[w];
 	}
 	
 	public int count(){
