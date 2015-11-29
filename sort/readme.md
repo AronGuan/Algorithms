@@ -56,7 +56,7 @@
     <tr>
         <th>归并排序</th>
         <th>是</th>
-        <th>是</th>
+        <th>否</th>
         <th>NlogN</th>
         <th>N</th>
     </tr>
