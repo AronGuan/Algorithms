@@ -1,12 +1,12 @@
 package pers.aron;
 
 public class BST<Key extends Comparable<Key>,Value> {
-	private Node root;  //¶ş²æ²éÕÒÊ÷µÄ¸ù½Úµã
+	private Node root;  //äºŒå‰æŸ¥æ‰¾æ ‘çš„æ ¹èŠ‚ç‚¹
 	private class Node{
-		private Key key;  //¼ü
-		private Value val;  //Öµ
-		private Node left,right;  //Ö¸Ïò×ÓÊ÷µÄÁ´½Ó
-		private int N;  //ÒÔ¸Ã½áµãÎª¸ùµÄ×ÓÊ÷ÖÖµÄ½áµã×ÜÊı
+		private Key key;  //é”®
+		private Value val;  //å€¼
+		private Node left,right;  //æŒ‡å‘å­æ ‘çš„é“¾æ¥
+		private int N;  //ä»¥è¯¥ç»“ç‚¹ä¸ºæ ¹çš„å­æ ‘ä¸­çš„ç»“ç‚¹æ€»æ•°
 		
 		public Node(Key key,Value val,int N){
 			this.key = key;
@@ -29,8 +29,8 @@ public class BST<Key extends Comparable<Key>,Value> {
 	}
 	
 	private Value get(Node x,Key key){
-		//ÔÚÒÔxÎª¸ù½ÚµãµÄ×ÓÊ÷ÖĞ²éÕÒ²¢·µ»ØkeyËù¶ÔÓ¦µÄÖµ
-		//Èç¹ûÕÒ²»µ½Ôò·µ»Ønull
+		//åœ¨ä»¥xä¸ºæ ¹èŠ‚ç‚¹çš„å­æ ‘ä¸­æŸ¥æ‰¾å¹¶è¿”å›keyæ‰€å¯¹åº”çš„å€¼
+		//å¦‚æœæ‰¾ä¸åˆ°åˆ™è¿”å›null
 		if(x == null) return null;
 		int cmp = key.compareTo(x.key);
 		if(cmp < 0) return get(x.left,key);
@@ -39,13 +39,13 @@ public class BST<Key extends Comparable<Key>,Value> {
 	}
 	
 	public void put(Key key,Value val){
-		//²éÕÒkey,ÕÒµ½Ôò¸üĞÂËüµÄÖµ£¬·ñÔòÎªËü´´½¨Ò»¸öĞÂµÄ½áµã
+		//æŸ¥æ‰¾key,æ‰¾åˆ°åˆ™æ›´æ–°å®ƒçš„å€¼ï¼Œå¦åˆ™ä¸ºå®ƒåˆ›å»ºä¸€ä¸ªæ–°çš„ç»“ç‚¹
 		root = put(root,key,val);
 	}
 	
 	private Node put(Node x,Key key,Value val){
-		//Èç¹ûkey´æÔÚÓÚÒÔxÎª¸ù½áµãµÄ×ÓÊ÷ÖÖÔò¸üĞÂËüµÄÖµ
-		//·ñÔò½«ÒÔkeyºÍvalÎª¼üÖµ¶ÔµÄĞÂ½áµã²åÈëµ½¸Ã×ÓÊ÷ÖĞ
+		//å¦‚æœkeyå­˜åœ¨äºä»¥xä¸ºæ ¹ç»“ç‚¹çš„å­æ ‘ç§åˆ™æ›´æ–°å®ƒçš„å€¼
+		//å¦åˆ™å°†ä»¥keyå’Œvalä¸ºé”®å€¼å¯¹çš„æ–°ç»“ç‚¹æ’å…¥åˆ°è¯¥å­æ ‘ä¸­
 		if(x == null) return new Node(key,val,1);
 		int cmp = key.compareTo(x.key);
 		if (cmp < 0) x.left = put(x.left ,key,val);
@@ -55,7 +55,7 @@ public class BST<Key extends Comparable<Key>,Value> {
 		return x;
 	}
 	
-	//ÓĞĞòĞÔÏà¹ØµÄ·½·¨ÓëÉ¾³ı²Ù×÷
+	//æœ‰åºæ€§ç›¸å…³çš„æ–¹æ³•ä¸åˆ é™¤æ“ä½œ
 	public Key min(){
 		return min(root).key;
 	}
@@ -87,13 +87,13 @@ public class BST<Key extends Comparable<Key>,Value> {
 		else return x;
 	}
 	
-	//Ñ¡ÔñºÍÅÅÃû
+	//é€‰æ‹©å’Œæ’å
 	public Key select(int k){
 		return select(root,k).key;
 	}
 	
 	private Node select(Node x,int k){
-		//·µ»ØÅÅÃûÎªkµÄ½áµã
+		//è¿”å›æ’åä¸ºkçš„ç»“ç‚¹
 		if(x == null) return null;
 		int t = size(x.left);
 		if (t>k) return select(x.left,k);
@@ -105,7 +105,7 @@ public class BST<Key extends Comparable<Key>,Value> {
 		return rank(key,root);
 	}
 	private int rank(Key key,Node x){
-		//·µ»ØÒÔxÎª¸ù½áµãµÄ×ÓÊ÷ÖĞĞ¡ÓÚx.keyµÄ¼üµÄÊıÁ¿
+		//è¿”å›ä»¥xä¸ºæ ¹ç»“ç‚¹çš„å­æ ‘ä¸­å°äºx.keyçš„é”®çš„æ•°é‡
 		if(x == null) return 0;
 		int cmp = key.compareTo(x.key);
 		if(cmp < 0) return rank(key,x.left);
@@ -113,7 +113,7 @@ public class BST<Key extends Comparable<Key>,Value> {
 		else return size(x.left);
 	}
 	
-	//É¾³ı²Ù×÷
+	//åˆ é™¤æ“ä½œ
 	public void deleteMin(){
 		root = deleteMin(root);
 	}
@@ -145,7 +145,7 @@ public class BST<Key extends Comparable<Key>,Value> {
 		return x;
 	}
 	
-	//·¶Î§²éÕÒ
+	//èŒƒå›´æŸ¥æ‰¾
 	public Iterable<Key> keys(){
 		return keys(min(),max());
 	}
