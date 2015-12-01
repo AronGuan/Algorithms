@@ -4,21 +4,19 @@ public class Insertion extends Sort{
 
 	@Override
 	public void sort(Comparable[] a){
-		//½«a[]°´ÉıĞòÅÅĞò
+		//å°†a[]æŒ‰å‡åºæ’åˆ—
 		int N = a.length;
-		for(int i =0; i < N;i++){
-			//½«a[i]ºÍa[i+1..N]ÖĞ×îĞ¡µÄÔªËØ½»»»
-			int min = i;
-			for(int j = i + 1;j < N;j++){
-				if(less(a[j],a[min])) min = j;
+		for(int i = 1;i < N;i++){
+			//å°†a[i]æ’å…¥åˆ°a[i-1],a[i-2]...ä¹‹ä¸­
+			for(int j = i;j > 0 && less(a[j],a[j-1]);j--){
+				exch(a,j,j-1);
 			}
-			exch(a,i,min);
 		}
 	}
 	
 	public static void main(String[] args){
-		Sort selection = new Insertion();
-		generate(40000);
+		Sort selection = new Selection();
+		generate(100000);
 		printTime(selection);
 		isSorted();
 	}
