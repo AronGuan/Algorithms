@@ -2,13 +2,13 @@ package pers.aron;
 
 import java.util.Iterator;
 
-//ÏÂÑ¹Õ»(ÄÜ¹»¶¯Ì¬µ÷ÕûÊı×é´óĞ¡µÄÊµÏÖ)
+//ä¸‹å‹æ ˆ(èƒ½å¤ŸåŠ¨æ€è°ƒæ•´æ•°ç»„å¤§å°çš„å®ç°)
 @SuppressWarnings("unchecked")
 public class ResizingArrayStack<Item> implements Iterable<Item>{
 
-	private Item[] a = (Item[])new Object[1]; //Õ»ÔªËØ
+	private Item[] a = (Item[])new Object[1]; //æ ˆå…ƒç´ 
 	
-	private int N = 0; //ÔªËØÊıÁ¿
+	private int N = 0; //å…ƒç´ æ•°é‡
 	
 	public boolean isEmpty(){
 		return  N == 0;
@@ -22,8 +22,8 @@ public class ResizingArrayStack<Item> implements Iterable<Item>{
 		Item[] temp = (Item[])new Object[max];
 		for(int i = 0; i< N;i++){
 			temp[i]  = a[i];
-			a = temp;
 		}
+		a = temp;
 	}
 	
 	public void push(Item item){
@@ -45,7 +45,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item>{
 	}
 	
 	private class ReverseArrayIterator implements Iterator<Item>{
-		//Ö§³ÖÏÈ½øÏÈ³öµÄµü´ú
+		//æ”¯æŒå…ˆè¿›å…ˆå‡ºçš„è¿­ä»£
 		private int i = 0;
 
 		@Override
