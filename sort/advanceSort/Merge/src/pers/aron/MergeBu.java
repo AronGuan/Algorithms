@@ -1,12 +1,12 @@
 package pers.aron;
 
-//×Ô¶¥ÏòÏÂµÄ·½Ê½
+//è‡ªä½å‘ä¸Šçš„æ–¹å¼
 public class MergeBu extends Sort{
 
 	private static Comparable[] aux;
 	
 	public static void merge(Comparable[] a,int lo,int mid,int hi){
-		//½«a[lo...mid]ºÍa[mid+1...hi]¹é²¢
+		//å°†a[lo...mid]å’Œa[mid+1...hi]å½’å¹¶
 		int i = lo,j = mid + 1;
 		for(int k = lo; k <= hi; k++){
 			aux[k] = a[k];
@@ -21,7 +21,7 @@ public class MergeBu extends Sort{
 	
 	@Override
 	public void sort(Comparable[] a){
-		//½øĞĞlgN´ÎÁ½Á½¹é²¢
+		//è¿›è¡ŒlgNæ¬¡ä¸¤ä¸¤å½’å¹¶
 		
 		int N = a.length;
 		aux = new Comparable[a.length];
