@@ -15,7 +15,7 @@ public class LSD {
 			for(int i=0;i < N; i++)
 				count[a[i].charAt(d)+1]++;
 			
-			for(int r=0; r < r; r++)   //将频率转换为索引
+			for(int r=0; r < R; r++)   //将频率转换为索引
 				count[r+1] += count[r];
 			
 			for(int i = 0; i < N; i++) //将元素分类
