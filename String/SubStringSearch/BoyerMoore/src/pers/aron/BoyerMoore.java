@@ -2,32 +2,37 @@ package pers.aron;
 
 public class BoyerMoore {
 	private String pat;
-	private int[][] dfa;
+	private int[] right;
 
-	public KMP(String pat){
+	public BoyerMoore(String pat){
 		this.pat = pat;
-		int R = 256;
 		int M = pat.length();
-		dfa = new int[R][M];
-		dfa[pat.charAt(0)][0] = 1;
-		for(int j = 1,X = 0;j < M;j++){
-			for (int c = 0;c < R;c++){
-				dfa[c][j] = dfa[c][X];
-			}
-			dfa[pat.charAt(j)][j] = j + 1;
-			X = dfa[pat.charAt(j)][X];
+		int R = 256;
+		right = new int[R];
+		for(int c = 0;c < R;c++){
+			right[c] = -1;
+		}
+		for(int j = 0;j < M;j++){
+			right[pat.charAt(j)] = j;
 		}
 	}
 
 	public int search(String txt){
 		int N = txt.length();
 		int M = pat.length();
-		int i,j;
-		for (i = 0,j = 0;i < N && j < M;i++){
-			j = dfa[txt.charAt(i)][j];
+		int skip;
+		for(int i = 0;i <= N-M;i += skip ){
+			skip = 0;
+			for (int j = M - 1;j >=0;j-- ){
+				if(txt.charAt(i+j) != pat.charAt(j)){
+					skip = j - right[txt.charAt(i+j)];
+					if(skip < 1) skip = 1;
+					break;
+				}
+			}
+			if(skip == 0) return i;
 		}
-		if(j == M) return i - M;
-		else return N;
+		return N;
 	}
 
 }
