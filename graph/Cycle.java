@@ -10,7 +10,10 @@ public class Cycle {
 	public Cycle(Graph G){
 		marked = new boolean[G.V()];
 		for(int s = 0;s < G.V();s++){
-			dfs(G,s,s);
+		 	if(!marked[s]){
+				dfs(G,s,s);	
+			}	
+			
 		}
 	}
 
