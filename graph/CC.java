@@ -24,7 +24,7 @@ public class CC {
 		marked[v] = true;
 		id[v] = count;
 		for (int w : G.adj(v)){
-			if(!marked[v]){
+			if(!marked[w]){
 				dfs(G,w);
 			}
 		}
