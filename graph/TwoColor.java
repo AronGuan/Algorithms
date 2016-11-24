@@ -12,7 +12,9 @@ public class TwoColor {
 		marked = new boolean[G.V()];
 		color = new boolean[G.V()];
 		for(int s = 0;s < G.V();s++){
-			dfs(G,s);
+		 	if(!marked[s]){
+				dfs(G,s);	
+			}
 		}
 	}
 
