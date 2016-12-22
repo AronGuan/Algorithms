@@ -24,7 +24,7 @@ public class TwoColor {
 			if(!marked[w]){
 				color[w] = !color[v];
 				dfs(G,w);
-			}else if(marked[w] == marked[v]){
+			}else if(color[w] == color[v]){
 				isTwoColorable = false;
 			}
 
