@@ -2,13 +2,13 @@ package pers.aron;
 
 import java.util.Date;
 
-//»ùÓÚÏßĞÔÌ½²âµÄ·ûºÅ±í
+//åŸºäºçº¿æ€§æ¢æµ‹çš„ç¬¦å·è¡¨
 public class LinearProbingHashST<Key,Value> {
 	
-	private int N; //·ûºÅ±íÖĞ¼üÖµ¶ÔµÄ×ÜÊı
-	private int M = 16; //ÏßĞÔÌ½²â±íµÄ´óĞ¡
-	private Key[] keys; //¼ü
-	private Value[] vals; //Öµ
+	private int N; //ç¬¦å·è¡¨ä¸­é”®å€¼å¯¹çš„æ€»æ•°
+	private int M = 16; //çº¿æ€§æ¢æµ‹è¡¨çš„å¤§å°
+	private Key[] keys; //é”®
+	private Value[] vals; //å€¼
 	
 	public LinearProbingHashST(){
 		keys = (Key[])new Object[M];
@@ -36,7 +36,7 @@ public class LinearProbingHashST<Key,Value> {
 	}
 	
 	public void put(Key key,Value val){
-		if(N >= M/2) resize(2*M); //½«M¼Ó±¶
+		if(N >= M/2) resize(2*M); //å°†MåŠ å€
 		int i;
 		for(i = hash(key);keys[i] != null;i = (i + 1)%M){
 			if(keys[i].equals(key)){
@@ -44,6 +44,9 @@ public class LinearProbingHashST<Key,Value> {
 				return;
 			}
 		}
+		keys[i] = key;
+		values[i] = value;
+		N++
 	}
 	
 	public Value get(Key key){
